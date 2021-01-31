@@ -1,0 +1,19 @@
+{
+  "name": "mak_alamin/my_mvc",
+  "description": "My Custom PHP MVC Framework",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Mak Alamin",
+      "email": "makalamin012@gmail.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\" : "./"
+    }
+  }
+}
