@@ -4,18 +4,23 @@ namespace app\core;
 
 class Application
 {
+  public static $rootDir;
   public $request;
+  public $response;
   public $router;
+  public static $app;
 
-  public function __construct()
+  public function __construct($rootDir)
   {
 
-    echo '<link rel="stylesheet" href="assets/css/main.css">';
-
+    self::$rootDir = $rootDir;
+    self::$app = $this;
+    
     set_error_handler([$this, 'my_error_handler'] , E_ALL);
 
     $this->request = new Request();
-    $this->router = new Router($this->request);
+    $this->response = new Response();
+    $this->router = new Router($this->request, $this->response);
   }
 
   public function my_error_handler($error_level,$error_message, $error_file,$error_line,$error_context){
