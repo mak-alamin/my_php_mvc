@@ -29,7 +29,7 @@ class Router
   {
     $path = $this->request->get_path();
 
-    $method = $this->request->get_method();
+    $method = $this->request->method();
 
     $callback = $this->routes[$method][$path] ?? false;
 
@@ -42,8 +42,12 @@ class Router
       return $this->render_view($callback);
     }
 
-    return call_user_func($callback);
-   
+    if (is_array($callback)) {
+      Application::$app->controller = new $callback[0]();
+      $callback[0] = Application::$app->controller;
+    }
+
+    return call_user_func($callback, $this->request);
   }
 
   public function render_view($view, $params=[])
@@ -56,14 +60,16 @@ class Router
   }
 
   protected function layoutContent(){
-    $layout_file = Application::$rootDir . "/views/layouts/main.php";
+    $layout = Application::$app->controller->layout;
+    $layout_file = Application::$rootDir . "/views/layouts/$layout.php";
 
     if (file_exists($layout_file)) {
       ob_start();   
       include_once $layout_file;
       return ob_get_clean();
+   
     } else {
-      echo "Error: You might have been forgot to create a layout file!";
+      echo "Error: Layout not found!";
     }
   }
 

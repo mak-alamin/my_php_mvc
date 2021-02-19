@@ -15,7 +15,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
+      <div class="container">
         <a class="navbar-brand" href="/">MY MVC</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,11 @@
             <a class="nav-link" href="/services">Services</a>
             <a class="nav-link" href="/about">About Us</a>
             <a class="nav-link" href="/contact">Contact Us</a>
+          </div>
+
+          <div class="navbar-nav navbar-right">
+            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link" href="/login">Login</a>
           </div>
         </div>
       </div>

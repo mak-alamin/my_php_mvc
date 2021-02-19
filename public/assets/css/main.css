@@ -3,3 +3,7 @@
   padding: 10px 30px;
   margin-bottom: 20px;
 }
+
+.navbar-collapse{
+  justify-content: space-between;
+}
