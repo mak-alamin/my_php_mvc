@@ -9,7 +9,7 @@
     
     $fields->input_field($registerModel, 'your_email', 'email', 'Your Email');
     
-    $fields->input_field($registerModel, 'your_password', 'password', 'Password');
+    $fields->input_field($registerModel, 'password', 'password', 'Password');
     
     $fields->input_field($registerModel, 'confirmPassword', 'password', 'Confirm Password');
 

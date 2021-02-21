@@ -35,12 +35,16 @@ abstract class Model{
           $ruleName = $rule[0];
         }
 
-        if ($ruleName == self::RULE_REQUIRED && !$value) {
+        if ($ruleName === self::RULE_REQUIRED && !$value) {
           $this->addError($attribute, self::RULE_REQUIRED);
         }
 
-        if ($ruleName == self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
+        if ($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
           $this->addError($attribute, self::RULE_EMAIL);
+        }
+
+        if ( $ruleName === self::RULE_MATCH && $value !== $this->{$rule['match']} ) {
+          $this->addError($attribute, self::RULE_MATCH, $rule);
         }
       }
     }
@@ -48,9 +52,14 @@ abstract class Model{
     return empty($this->errors);
   }
 
-  private function addError($attribute, $rule)
+  private function addError($attribute, $rule, $params=[])
   {
     $message = $this->errorMessages()[$rule] ?? '';
+
+    foreach ($params as $key => $value) {
+      $message = str_replace("{{$key}}", $value, $message);
+    }
+
     $this->errors[$attribute][] = $message;
   }
 
