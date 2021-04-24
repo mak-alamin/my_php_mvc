@@ -87,7 +87,7 @@ class Router
       include_once $view_file;
       return ob_get_clean();
     } else {
-      echo "Error: You might have been forgot to create the $view view file!";
+      echo "Error: $view view file not found!";
     }
   }
 }

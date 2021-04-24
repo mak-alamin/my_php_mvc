@@ -3,7 +3,23 @@
   padding: 10px 30px;
   margin-bottom: 20px;
 }
-
 .navbar-collapse{
   justify-content: space-between;
+}
+.product-box{
+  display: flex;
+}
+.btn{
+  margin-right: 5px;
+}
+.btn.red{
+  background-color: #C00222;
+  color: #E7E8EA;
+}
+.btn.black{
+  background-color: black;
+  color: #E7E8EA;
+}
+.btn.white{
+  background-color: #E7E8EA;
 }

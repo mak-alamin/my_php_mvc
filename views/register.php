@@ -5,13 +5,13 @@
 
     $fields = app\core\Application::$app->fields;
 
-    $fields->input_field($registerModel, 'your_name', 'text', 'Your Name');
+    $fields->input_field($User, 'name', 'text', 'Your Name');
     
-    $fields->input_field($registerModel, 'your_email', 'email', 'Your Email');
+    $fields->input_field($User, 'email', 'email', 'Your Email');
     
-    $fields->input_field($registerModel, 'password', 'password', 'Password');
+    $fields->input_field($User, 'password', 'password', 'Password');
     
-    $fields->input_field($registerModel, 'confirmPassword', 'password', 'Confirm Password');
+    $fields->input_field($User, 'confirmPassword', 'password', 'Confirm Password');
 
     $fields->submit_button();
   ?>

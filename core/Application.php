@@ -7,14 +7,17 @@ use app\core\form\Fields;
 class Application
 {
   public static $rootDir;
-  public $request;
-  public $response;
-  public $router;
-  public $controller;
-  public $fields;
-  public static $app;
+  public Database $db;
+  public Request $request;
+  public Response $response;
+  public Router $router;
+  public Controller $controller;
+  public Session $session;
+  public Fields $fields;
 
-  public function __construct($rootDir)
+  public static Application $app;
+
+  public function __construct($rootDir, $config)
   {
 
     self::$rootDir = $rootDir;
@@ -25,6 +28,9 @@ class Application
     $this->request = new Request();
     $this->response = new Response();
     $this->router = new Router($this->request, $this->response);
+    $this->controller = new Controller();
+    $this->session = new Session();
+    $this->db = new Database($config['db']);
 
     $this->fields = new Fields();
   }

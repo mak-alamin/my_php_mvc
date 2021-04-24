@@ -31,6 +31,14 @@ class SiteController extends Controller
     return $this->render('services', $params);
   }
 
+  
+  public function users()
+  {
+    $params = [];
+
+    return $this->render('users', $params);
+  }
+
   public function contact()
   {
     $params = [];
